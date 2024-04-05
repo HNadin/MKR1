@@ -8,7 +8,7 @@ def sample_text(tmpdir):
     """
     Fixture that creates a sample text file for testing.
     """
-    sample_text = "Hello, world! This is a sample text file. It has three sentences."
+    sample_text = "Hello, world! This is a sample text file. It has three sentences. One. Two. Three! Test test test..."
     file_path = os.path.join(tmpdir, "test.txt")
     with open(file_path, "w") as file:
         file.write(sample_text)
@@ -18,6 +18,8 @@ def sample_text(tmpdir):
     ("Hello, world!", 2, 1),
     ("This is a sample text file.", 6, 1),
     ("It has three sentences.", 4, 1),
+    ("One. Two. Three!", 3, 3),
+    ("Test test test...", 3, 1),
 ])
 def test_count_words_and_sentences(tmpdir, input_text, expected_words, expected_sentences):
     """
@@ -36,5 +38,5 @@ def test_count_words_and_sentences_with_fixture(sample_text):
     Test count_words_and_sentences function using a fixture.
     """
     words, sentences = count_words_and_sentences(sample_text)
-    assert words == 12
-    assert sentences == 3
+    assert words == 18
+    assert sentences == 7
