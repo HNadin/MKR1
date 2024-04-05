@@ -1,3 +1,5 @@
+import string
+
 def count_words_and_sentences(file_path: str) -> tuple[int, int]:
     """
     Count the number of words and sentences in a text file.
@@ -20,3 +22,9 @@ def count_words_and_sentences(file_path: str) -> tuple[int, int]:
     num_sentences = sum(text.count(end) for end in sentence_endings)
 
     return num_words, num_sentences
+
+if __name__ == "__main__":
+    file_path = "test.txt"  # Replace with the path to your text file
+    words, sentences = count_words_and_sentences(file_path)
+    print(f"Number of words: {words}")
+    print(f"Number of sentences: {sentences}")
