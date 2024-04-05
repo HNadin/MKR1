@@ -1,3 +1,4 @@
 This is a longer test file with, more words and sentences.
 It should test: whether the word counter function works properly with larger texts.
 Let's see if it; can handle this!
+Some? special characters! are included, as well...

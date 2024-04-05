@@ -1,27 +1,27 @@
-import string
+import re
+from typing import Tuple
 
-def count_words_and_sentences(file_path: str) -> tuple[int, int]:
+
+def count_words_and_sentences(file_path: str) -> Tuple[int, int]:
     """
-    Count the number of words and sentences in a text file.
+    Підраховує кількість слів і речень у вказаному файлі.
 
     Args:
-    file_path (str): The path to the text file.
+        file_path (str): Шлях до файлу.
 
     Returns:
-    tuple[int, int]: A tuple containing the number of words and sentences.
+        Tuple[int, int]: Кількість слів і речень у файлі.
     """
     with open(file_path, 'r') as file:
         text = file.read()
 
-    # Counting words
-    words = text.split()
-    num_words = len(words)
+    word_count = len(text.split())
 
-    # Counting sentences
-    sentence_endings = ('.', '!', '?', '...')
-    num_sentences = sum(text.count(end) for end in sentence_endings)
+    # Використання регулярного виразу для підрахунку речень
+    sentence_count = len(re.findall(r'[.!?]+', text))
 
-    return num_words, num_sentences
+    return word_count, sentence_count
+
 
 if __name__ == "__main__":
     file_path = "test.txt"  # Replace with the path to your text file
